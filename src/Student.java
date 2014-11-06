@@ -6,7 +6,7 @@ public class Student {
     	private String name;
     
 	//turn this into an array///////////////
-    	private int mark1, mark2, mark3; 
+    	private int txtmarkone, txtmarktwo, txtmarkthree; 
 
 
  //constructor methods - 3 ways you can make a student
@@ -18,14 +18,14 @@ public class Student {
 	//Additonal Constructor
 	public Student(String nm, int t1, int t2, int t3) {
 		name = nm;
-		mark1 = t1;
-		mark2 = t2;
-		mark3 = t3;
+		txtmarkone = t1;
+		txtmarktwo = t2;
+		txtmarkthree = t3;
 	}
 
 	//Another constructor
 	public Student(Student s) {
-		this(s.name, s.mark1, s.mark2, s.mark3);
+		this(s.name, s.txtmarkone, s.txtmarktwo, s.txtmarkthree);
 	}
 
     /*
@@ -40,44 +40,46 @@ public class Student {
 
     public void setMark(int whichmark, int number){
     	if (whichmark == 1) {
-    		mark1 = number;
+    		txtmarkone = number;
     	} else if (whichmark == 2) {
-    		mark2 = number;
+    		txtmarktwo = number;
     	} else{
 
-    		mark3 = number;
+    		txtmarkthree = number;
     	}
     }
 
     public int getAverage() {
-    	int average = (mark1 + mark2 + mark3) / 3;
+        
+    	int average ;
+              average = (txtmarkone + txtmarktwo + txtmarkthree) / 3;
     	return average;
     }
 
 
     public int getMark(int whichmark) {
-	if (whichmark == 1) return mark1;
-	else if (whichmark ==2) return mark2;
-	else return mark3;
+	if (whichmark == 1) return txtmarkone;
+	else if (whichmark ==2) return txtmarktwo;
+	else return txtmarkthree;
     }
 
     public int getHighscore() {
-    	if (mark1 > mark2 && mark1 > mark3) {
-    		return mark1;
+    	if (txtmarkone > txtmarktwo && txtmarkone > txtmarkthree) {
+    		return txtmarkone;
     	}
-    	else if (mark2 > mark1 && mark2 > mark3){
-    		return mark2;
+    	else if (txtmarktwo > txtmarkone && txtmarktwo > txtmarkthree){
+    		return txtmarktwo;
 
     	} else {
-    		return mark3;
+    		return txtmarkthree;
     	}
     }
 
     public String toString() {
     	String result = "Name: " + name;
-    	result += "\nMark 1:\t" + mark1;
-    	result += "\nMark 2:\t" + mark2;
-    	result += "\nMark 3:\t" + mark3;
+    	result += "\nMark 1:\t" + txtmarkone;
+    	result += "\nMark 2:\t" + txtmarktwo;
+    	result += "\nMark 3:\t" + txtmarkthree;
     	result += "\n~~~~~~~~~~~~~~~~~~";
     	result += "\nAverage:\t" + getAverage();
     	return result;
@@ -94,9 +96,12 @@ public class Student {
     	if (name.equals("")) 
     		message += "\nName is required\nPlease re-enter all data";
     	
-	if (mark1 < 0 || mark1 > 100 || mark2 < 0 || mark2 > 100 || mark3 < 0 || mark3 > 100) 
+	if (txtmarkone < 0 || txtmarkone > 100 || txtmarktwo < 0 || txtmarktwo > 100 || txtmarkthree < 0 || txtmarkthree > 100) 
     		message += "\nAt least one mark is out of range, please re-enter all data";
-	
+    
+        if (message !=null){
+                message+= ("\n Please re-enter all data. ");
+        }
 	return message;
     	}
  }
