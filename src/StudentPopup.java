@@ -120,7 +120,7 @@ Student temp;
             JOptionPane.showMessageDialog(this, "Fill out all fields");
            return;
         }
-        
+    
         this.dispose();
         
     

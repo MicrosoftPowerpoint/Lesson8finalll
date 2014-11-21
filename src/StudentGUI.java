@@ -95,6 +95,11 @@ public class StudentGUI extends javax.swing.JFrame {
         });
 
         btnfarnext.setText(">>");
+        btnfarnext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfarnextActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Count");
 
@@ -140,6 +145,11 @@ public class StudentGUI extends javax.swing.JFrame {
         });
 
         txtcount.setEditable(false);
+        txtcount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcountActionPerformed(evt);
+            }
+        });
 
         txtindex.setEditable(false);
 
@@ -303,11 +313,11 @@ public void showStudent(){
     }//GEN-LAST:event_btnaddActionPerformed
          
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
-        // TODO add your handling code here:
+   
     }//GEN-LAST:event_txtnameActionPerformed
 
     private void txtmarkoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmarkoneActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_txtmarkoneActionPerformed
 
     private void btnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnextActionPerformed
@@ -319,18 +329,43 @@ public void showStudent(){
     }//GEN-LAST:event_btnnextActionPerformed
 
     private void btnmodifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodifyActionPerformed
-    StudentPopup form = new StudentPopup(this, true);
-    
-    form.setModal(true);
-    form.setLocationRelativeTo(this);
-    form.setVisible(true);
+    StudentPopup spop = new StudentPopup(this, true);
+    spop.setForm(s[currentstudent]);
+    spop.setModal(true);
+    spop.setLocationRelativeTo(this);
+    spop.setVisible(true);
 
+    Student temp = spop.getStudent();
+     String em = temp.validateData();
+     if(em==null)
+     {
+         s[currentstudent]= temp;
+      
+         
+         showStudent();
+        
+     }
+     else
+         JOptionPane.showMessageDialog(this,em);
     }//GEN-LAST:event_btnmodifyActionPerformed
 
     private void txtaverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaverageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtaverageActionPerformed
 
+    private void txtcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcountActionPerformed
+
+    private void btnfarnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfarnextActionPerformed
+        if(currentstudent < size -1 && currentstudent>-1)
+        {
+            currentstudent=size-1;
+            showStudent();
+            
+        }
+       
+    }//GEN-LAST:event_btnfarnextActionPerformed
 
   
      //*/
